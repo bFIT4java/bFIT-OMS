@@ -1,0 +1,64 @@
+<html>
+
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+
+<title>Login</title>
+
+</head>
+
+<script type="text/javascript">
+
+function validate(){
+
+	var user = document.myform.un.value;
+
+	var pass = document.myform.pwd.value;
+
+	if(user==''||pass==''){
+
+	alert("Field(s) should not be empty!!! Try again");
+
+	return false;
+
+}
+
+	else{
+
+	alert("Posting your data to servlet");
+
+	return true;
+
+}
+
+}
+
+</script>
+
+<body bgcolor='black' >
+
+<basefont color = 'white' >
+
+<img src="BFIT.png" height ="150"width = "300"/><br>
+
+<center><h1>Login Page</h1></center>
+
+<form name="myform" onsubmit="return validate();" action="http://localhost:8082/bFit/ValidatorServlet" method = "post">
+
+<center>
+
+	Username: <input type="text" name = "un"><br><br>
+
+	Password: <input type="password" name= "pwd"><br><br>
+
+	<input type = "submit" value ="Login"><br><br>
+
+
+	If you don't have a login id already, please register yourself by clicking the following link<br><br>
+
+	<a href="Registration.html"><img src="RegisterNOW.jpg" height ="60"width = "80"/></a>
+
+</center>
+
+</html>
