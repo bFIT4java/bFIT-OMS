@@ -1,0 +1,134 @@
+<html>
+
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+
+<title>Registration page</title>
+
+</head>
+
+<script type="text/javascript">
+
+function validate(){
+
+	var user = document.myform.un.value;
+
+	var pass = document.myform.pwd.value;
+
+	var confpass = document.myform.conf.value;
+
+	var fname = document.myform.fn.value;
+
+	var lname = document.myform.ln.value;
+
+	var address = document.myform.add1.value;
+
+	var cit = document.myform.city.value;
+
+	var stat = document.myform.state.value;
+
+	var zp = document.myform.zip.value;
+
+	var em = document.myform.email.value;
+
+	var company = document.myform.cn.value;
+
+	var count = document.myform.country.value;
+
+	var pn = document.myform.phone.value;
+
+	var wpn = document.myform.workPhone.value;
+
+
+
+	if(count==''||user==''||pass==''||confpass==''||fname==''||lname==''||address==''||cit==''||stat==''||zp==''||em==''||pn==''){
+
+	alert("Field(s) should not be empty!!! Try again");
+
+	return false;
+
+}
+
+	else if(confpass!=pass){
+
+	alert("Passwords do not match!!! Try again");
+
+	return false;
+
+}
+
+	else{
+
+	alert("Posting your data to servlet");
+
+	return true;
+
+}
+
+
+}
+
+
+
+</script>
+
+<body bgcolor='black' >
+
+<basefont color = 'white' >
+
+<img src="BFIT.png" height ="150"width = "300"/><br>
+
+<center>
+
+<h1>Welcome to the registration page</h1><br>
+
+<h2>Fill the following details</h2>
+
+<form name="myform" onsubmit="return validate();" action="http://localhost:8082/OMS/RegisterServlet" method="post">
+
+<table>
+
+	<tr>Username:</tr> <tr><input type="text" name = "un"><br><br></tr>
+
+	<tr>Password:</tr> <tr> <input type="password" name = "pwd"><br><br></tr>
+
+	<tr>Confirm password:</tr> <tr> <input type="password" name = "conf"><br><br></tr>
+
+	<tr>First Name:</tr> <tr> <input type="text" name = "fn"><br><br></tr>
+
+	<tr>Last Name:</tr> <tr> <input type="text" name = "ln"><br><br></tr>
+
+	<tr>Company Name:</tr> <tr> <input type="text" name = "cn"><br><br></tr>
+
+	<tr>Address1:</tr> <tr> <input type="text" name = "add1"><br><br></tr>
+
+	<tr>Address2:</tr> <tr> <input type="text" name = "add2"><br><br></tr>
+
+	<tr>City:</tr> <tr> <input type="text" name = "city"><br><br></tr>
+
+	<tr>State:</tr> <tr> <input type="text" name = "state"><br><br></tr>
+
+	<tr>Zip:</tr> <tr> <input type="text" name = "zip"><br><br></tr>
+
+	<tr>Country: </tr> <tr> <input type="text" name = "country"><br><br></tr>
+
+	<tr>Email address:</tr> <tr> <input type="text" name = "email"><br><br></tr>
+
+	<tr>Phone number:</tr> <tr> <input type="text" name = "phone"><br><br></tr>
+
+	<tr>Work Phone number:</tr> <tr> <input type="text" name = "workPhone"><br><br></tr>
+
+	</table>
+
+	<input type="submit" value="Register">
+
+	
+
+</form>
+
+</center>
+
+</body>
+
+</html>
