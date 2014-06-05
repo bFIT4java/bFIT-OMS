@@ -1,0 +1,76 @@
+package com.ust;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+ import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/**
+ * Servlet implementation class RegisterServlet
+ */
+public class RegisterServlet extends HttpServlet {
+  private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public RegisterServlet() {
+        super();
+        // TODO Auto-generated constructor stub
+     }
+
+ /**
+  * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+  */
+
+ protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+   //Retrieve values from html page
+  String un=request.getParameter("un");
+  String pass=request.getParameter("pwd");
+  String fname = request.getParameter("fn");
+  String lname = request.getParameter("ln");
+   String address = request.getParameter("add1");
+  String cit = request.getParameter("city");
+  String stat = request.getParameter("state");
+  String zp = request.getParameter("zip");
+   String em = request.getParameter("email");
+  String company = request.getParameter("cn");
+  String count = request.getParameter("country");
+  String pn = request.getParameter("phone");
+   String wpn = request.getParameter("workPhone");
+   PrintWriter pw=response.getWriter();
+  //I will call the checkUswer method of CredentialChecker class
+  CredentialChecker cc= new CredentialChecker();
+  boolean flag =cc.checkRegisterUser(un);
+   if(flag==true){
+   
+   
+    //RequestDispatcher rd =request.getRequestDispatcher("Login.html");
+    //rd.forward(request, response);
+    System.out.println("youre already a user");
+   }
+  else{
+   //RequestDispatcher rd =request.getRequestDispatcher("Failure.jsp");
+   //rd.forward(request, response); 
+   
+   flag=cc.registerIntoDB(un, pass, fname, lname, address, cit, stat, zp, em, company, count, pn, wpn);
+    if(flag==true){
+    //RequestDispatcher rd =request.getRequestDispatcher("Success.jsp");
+    //rd.forward(request, response);
+    	pw.println("CONGRATULATIONS.....You are successfully registered");
+    	pw.println("<a href=\"HomePgForm.html\">Home</a>");
+//    	response.sendRedirect("HomePgForm.html");
+   }
+   else{
+    //RequestDispatcher rd =request.getRequestDispatcher("Failure.jsp");
+     //rd.forward(request, response);
+    System.out.println("something went wrong");
+   }
+  }
+ }
+
+}
