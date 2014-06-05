@@ -1,0 +1,58 @@
+package com.ust;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+ import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/**
+ * Servlet implementation class RegisterServlet
+ */
+public class ValidatorServlet extends HttpServlet {
+  private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public ValidatorServlet() {
+        super();
+        // TODO Auto-generated constructor stub
+     }
+
+ /**
+  * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+  */
+
+ protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	//Retrieve values from html page
+	  PrintWriter pw = response.getWriter();
+	   String un=request.getParameter("un");
+	  String pass=request.getParameter("pwd");
+	  
+	  //I will call the checkUswer method of CredentialChecker class
+	  CredentialChecker cc= new CredentialChecker();
+	  boolean flag=cc.checkRegisterUser(un);
+	  if(flag==true){
+		  flag =cc.checkUser(un, pass);
+		  if(flag==true){
+			  ///RequestDispatcher rd =request.getRequestDispatcher("Success.jsp");
+			  //rd.forward(request, response);
+			  response.sendRedirect("HomePgForm.html");
+		  }
+		  else{
+			  pw.println("Invalid username or password... Please try again");
+		  }
+	  } 
+	  else{
+	   //RequestDispatcher rd =request.getRequestDispatcher("Failure.jsp");
+	   //rd.forward(request, response);
+		  response.sendRedirect("Registration.html");
+	  }
+  }
+ 
+
+}
