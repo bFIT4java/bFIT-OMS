@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>ADMINISTRATIVE PAGE</title>
+</head>
+<body>
+<center>
+<body bgcolor="gold">
+<font color="green" size="10">
+<h1> Welcome the bFIT4java Administrator Page! </h1>
+<center>
+<img src="bFIT.png" height ="150"width = "300"/><br></center>
+<form action="http://localhost:8082/bFIT4java/AdminServlet" method="post">
+Enter Product ID:<input type="text" name="PRODUCT_ID"><br>
+Enter Product Name: <input type="text" name="PRODUCT_NAME"><br>
+Enter Inventory: <input type= "text" name="INVENTORY"><br>
+Enter Price: <input type="text" name="PRICE"><br>
+Enter Status: <select name="STATUS"><option value="in">IN STOCK</option>
+ <option value="so">SOLD OUT</option>  <option value="discon">DISCONTINUED</option>
+ <option value="bkOr">BACK ORDERED</option></select><br>
+<input type="submit" value="UPDATE"><br>
+</center>
+</font>
+</form>
+</body>
+</html>
