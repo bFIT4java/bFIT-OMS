@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>bFIT for Java HomePAGE</title>
+</head>
+<body bgcolor='black' >
+<basefont color = 'white' >
+<div id="container" style="width:1250px">
+
+ <div id="header" style ="height:200px" >
+ <h1><center>WELCOME TO bFIT HOME PAGE</center></h1>
+<font color="gold" size="20">
+
+<marquee right><b><i>iNnOvAtIoN is anything, BUT bUsInEsS as usual!!</i></b></marquee>
+</font>
+</div>
+
+ <div id="menu" style="width:250px;float:left;">
+ <p><font  size="6">
+ <b>Menu</b><br>
+ <a style= "color: #FFFFFF" href=Overview.html>Overview</a><br>
+<a style= "color: #FFFFFF" href= "Form.html">ABOUT US</a><br>
+<a  style= "color: #FFFFFF" href= "AdminLogin.html">Admin Login</a><br>
+<a style= "color: #FFFFFF" href= "Login.html">User Login</a>
+</font></p>
+ </div>
+ 
+ <div id="content" style=float:left;">
+<p align="center"><img src="BFIT.png" height=250 width=600/></p>
+<font color="white" size="8">
+
+
+<p><b><i><font color="red" size="12">Our Vision:</font></i></b> B fabulously F.I.T. aLLwAys !!!!</p>
+
+
+<p><b><i><font color="red" size="12">Our MISSION Statement :</font></i></b> To facilitate as localhost:365 to an open forum 
+for aspiring inventors and/or designers to market their gadgets and ReEnergize our Earth by selling refurbished techTOYS & gently 
+used women's fashion!
+</p>
+
+</font>
+</div>
+
+
+ </div>
+
+</body>
+</html>
