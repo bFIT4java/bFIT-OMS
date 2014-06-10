@@ -1,0 +1,188 @@
+Enter file contents herepackage com.ust;
+
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+
+
+public class CredentialChecker {
+
+
+ public boolean checkUser(String username,String password) {
+  boolean found =false;
+  //do not throws using servlets instead use try catch
+  try{
+  Class.forName("oracle.jdbc.driver.OracleDriver");
+   Connection con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","jades123");
+  
+  if(con!=null){
+   //You are successfully connected to DATABASE 
+   //pULL OUT ALL USERNAMES &PASSWORDS FROM USERS TABLE
+    //compare them with the one that is entered in html page
+   //if anyone of them is matching, that means, you are a Valid USER
+   //else, you are a fraud
+   Statement stmt=con.createStatement();
+   ResultSet rs=stmt.executeQuery("select * from REGISTRATION");
+    while (rs.next())
+   {
+    String nm = rs.getString(1);
+    String pwd = rs.getString(2);
+    if(username.equals(nm)&&password.equals(pwd)){
+     found= true;
+    }  
+   }
+ 
+  }
+  
+   }
+  catch(Exception e){
+   System.out.println("Database connection not successful...");
+   System.out.println("This might be due to various reasons..");
+   System.out.println(e.getMessage());
+    System.out.println(e.getCause());
+   System.out.println(e.getStackTrace());
+  }
+  return found;
+ }
+ 
+ public boolean checkRegisterUser(String username) {
+  boolean found =false;
+   //do not throws using servlets instead use try catch
+  try{
+  Class.forName("oracle.jdbc.driver.OracleDriver");
+  Connection con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","jades123");
+   
+  if(con!=null){
+   //You are successfully connected to DATABASE 
+   //pULL OUT ALL USERNAMES &PASSWORDS FROM USERS TABLE
+   //compare them with the one that is entered in html page
+   //if anyone of them is matching, that means, you are a Valid USER
+    //else, you are a fraud
+   Statement stmt=con.createStatement();
+   ResultSet rs=stmt.executeQuery("select * from REGISTRATION");
+   while (rs.next())
+   {
+    String nm = rs.getString(1);
+    if(username.equals(nm)){
+      found= true;
+    }  
+   }
+ 
+  }
+  
+  }
+  catch(Exception e){
+   System.out.println("Database connection not successful...");
+   System.out.println("This might be due to various reasons..");
+    System.out.println(e.getMessage());
+   System.out.println(e.getCause());
+   System.out.println(e.getStackTrace());
+  }
+  return found;
+ }
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ public boolean registerIntoDB(String user, String pass, String fn, String ln, String add, String city, String state, String zip, String email, String companyName, String country, String phone, String workPhone){
+   boolean added =false;
+  //do not throws using servlets instead use try catch
+  try{
+   Class.forName("oracle.jdbc.driver.OracleDriver");
+   Connection con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","jades123");
+    
+   if(con!=null){
+    //You are successfully connected to DATABASE 
+    //pULL OUT ALL USERNAMES &PASSWORDS FROM USERS TABLE
+    //compare them with the one that is entered in html page
+    //if anyone of them is matching, that means, you are a Valid USER
+     //else, you are a fraud
+    System.out.println("starting to add");
+    Statement stmt=con.createStatement();
+    PreparedStatement psmt = con.prepareStatement("INSERT INTO REGISTRATION VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)");
+     psmt.setString(1, user);
+    psmt.setString(2, pass);
+    psmt.setString(3, fn);
+    psmt.setString(4, ln);
+    psmt.setString(6, add);
+    psmt.setString(7, city);
+    psmt.setString(8, state);
+    psmt.setString(9, zip);
+     psmt.setString(11, email);
+    psmt.setString(5, companyName);
+    psmt.setString(12, phone);
+    psmt.setString(13, workPhone);
+    psmt.setString(10, country);
+    
+    psmt.executeUpdate();
+    System.out.println("Congratulaions "+user+". Registration successfully done");
+     //pw.println("Congratulations "+username+"<br>Registration successfully done");
+    added=true;
+   }
+  }
+  catch(Exception e){
+    System.out.println("Database connection not successful...");
+     System.out.println("This might be due to various reasons..");
+    System.out.println(e.getMessage());
+    System.out.println(e.getCause());
+    System.out.println(e.getStackTrace());
+  }
+  return added;
+  }
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 	public boolean searchProduct(String search){
+ 		boolean found =false;
+ 	   //do not throws using servlets instead use try catch
+ 	  try{
+ 	  Class.forName("oracle.jdbc.driver.OracleDriver");
+ 	  Connection con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","jades123");
+ 	   
+ 	  if(con!=null){
+ 	   //You are successfully connected to DATABASE 
+ 	   //pULL OUT ALL USERNAMES &PASSWORDS FROM USERS TABLE
+ 	   //compare them with the one that is entered in html page
+ 	   //if anyone of them is matching, that means, you are a Valid USER
+ 	    //else, you are a fraud
+ 	   Statement stmt=con.createStatement();
+ 	   ResultSet rs=stmt.executeQuery("select * from PRODUCT_MENU");
+ 	   while (rs.next())
+ 	   {
+ 		   
+ 	    String pn = rs.getString(1);
+ 	    if(search.equalsIgnoreCase(pn)){
+ 	      found= true;
+ 	    String pid = rs.getString(2);
+ 	    if(search.equalsIgnoreCase(pid)){
+ 	    	found= true;
+ 	    	
+ 	    	
+ 	    }  
+ 	   }
+ 	 
+ 	  }
+ 	  }
+ 	  } 	  catch(Exception e){
+ 	   System.out.println("Database connection not successful...");
+ 	   System.out.println("This might be due to various reasons..");
+ 	    System.out.println(e.getMessage());
+ 	   System.out.println(e.getCause());
+ 	   System.out.println(e.getStackTrace());
+ 	  }
+ 	  return found;
+ 	 }
+ 	}
+ 
