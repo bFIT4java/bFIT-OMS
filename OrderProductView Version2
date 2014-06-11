@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content Type" content="text/html; charset=ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+
+ 
+	
+  <center>
+  <table>
+ <tr> <td><input type="submit"  value="Order Products"  style="height:60px; width:95px" /></td>
+ 
+<td>	<input type= "submit" value = "View Order" style="height:60px; width:95px" /><br></td> </tr>
+	
+	</table>
+
+	
+	<input type= "submit" value = "Delete Order" style="height:60px; width:95px" />
+	
+	
+		
+<a style="margin-left:50px" href="history.go(-1)">BACK</a>
+		</center>
+
+
+	
+	
+	
+
+</body>
+</html>
