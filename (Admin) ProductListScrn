@@ -1,0 +1,112 @@
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>ADMINISTRATIVE PAGE</title>
+</head>
+<body>
+<center>
+<body bgcolor="gold">
+<font color="green" size="10">
+<h1> Order Management System
+</h1>
+<img src="bFIT.png" height ="150"width = "300"/><br></center>
+<form action="http://localhost:8082/bFIT4java/AdminServlet" method="post">
+<h2> 
+Product 	Search: &nbsp;	<INPUT TYPE="TEXT" NAME="rowArray.<%=i%>.text" LENGTH="30"><input type="checkbox"  Name="box" LENGTH="10"><br>
+</h2>
+
+<h3> <center>Product List </center></h3>
+<table border = "1px" CELLPADDING="3" CELLSPACING="1" align = "center">
+
+<tr>
+<th> Product ID  </th>
+<th> Prod Name</th>
+<th> Price $</th>
+<th>   <input type="checkbox"  Name="box" LENGTH="10"></th>
+</tr>
+
+ </TR>
+<%  for (int i = 0; i <count; i++) { %>
+    <TR>
+        <TD>
+ <CENTER><INPUT TYPE="TEXT" NAME="rowArray.<%=i%>.text" LENGTH="30"> </CENTER>
+        </TD>
+        <TD>
+ <Center><INPUT TYPE="TEXT" NAME="rowArray.<%=i%>.text" LENGTH="30"></Center>
+         </TD>
+        <TD>
+<Center><INPUT TYPE="TEXT" NAME="rowArray.<%=i%>.text" LENGTH="30"></Center>
+        </TD>
+        <TD>
+<Center><INPUT TYPE="Checkbox" NAME="rowArray.<%=i%>.text" LENGTH="30"></Center>
+        </TD>
+    </TR>
+    
+    <TR>
+        <TD>
+ <CENTER><INPUT TYPE="TEXT" NAME="rowArray.<%=i%>.text" LENGTH="30"> </CENTER>
+        </TD>
+        <TD>
+ <Center><INPUT TYPE="TEXT" NAME="rowArray.<%=i%>.text" LENGTH="30"></Center>
+         </TD>
+        <TD>
+<Center><INPUT TYPE="TEXT" NAME="rowArray.<%=i%>.text" LENGTH="30"></Center>
+        </TD>
+        <TD>
+<Center><INPUT TYPE="Checkbox" NAME="rowArray.<%=i%>.text" LENGTH="30"></Center>
+        </TD>
+    </TR>
+    
+    <TR>
+        <TD>
+ <CENTER><INPUT TYPE="TEXT" NAME="rowArray.<%=i%>.text" LENGTH="30"> </CENTER>
+        </TD>
+        <TD>
+ <Center><INPUT TYPE="TEXT" NAME="rowArray.<%=i%>.text" LENGTH="30"></Center>
+         </TD>
+        <TD>
+<Center><INPUT TYPE="TEXT" NAME="rowArray.<%=i%>.text" LENGTH="30"></Center>
+        </TD>
+        <TD>
+<Center><INPUT TYPE="Checkbox" NAME="rowArray.<%=i%>.text" LENGTH="30"></Center>
+        </TD>
+    </TR>
+    
+    <TR>
+        <TD>
+ <CENTER><INPUT TYPE="TEXT" NAME="rowArray.<%=i%>.text" LENGTH="30"> </CENTER>
+        </TD>
+        <TD>
+ <Center><INPUT TYPE="TEXT" NAME="rowArray.<%=i%>.text" LENGTH="30"></Center>
+         </TD>
+        <TD>
+<Center><INPUT TYPE="TEXT" NAME="rowArray.<%=i%>.text" LENGTH="30"></Center>
+        </TD>
+        <TD>
+<Center><INPUT TYPE="Checkbox" NAME="rowArray.<%=i%>.text" LENGTH="30"></Center>
+        </TD>
+    </TR>
+    
+    <TR>
+        <TD>
+ <CENTER><INPUT TYPE="TEXT" NAME="rowArray.<%=i%>.text" LENGTH="30"> </CENTER>
+        </TD>
+        <TD>
+ <Center><INPUT TYPE="TEXT" NAME="rowArray.<%=i%>.text" LENGTH="30"></Center>
+         </TD>
+        <TD>
+<Center><INPUT TYPE="TEXT" NAME="rowArray.<%=i%>.text" LENGTH="30"></Center>
+        </TD>
+        <TD>
+<Center><INPUT TYPE="Checkbox" NAME="rowArray.<%=i%>.text" LENGTH="30"></Center>
+        </TD>
+    </TR>   
+<%  } %>
+</table> &nbsp;
+
+<center><input type="submit" value="UPDATE"  style="height:50px; width: 100px"/></center><br>
+<center><input type="submit" value="DELETE"  style="height:50px; width: 100px"/></center><br>
+
+
+</font>
+</form>
+</body>
+</html>
