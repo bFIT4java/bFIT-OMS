@@ -1,0 +1,72 @@
+package com.UST;
+
+import java.io.PrintWriter;
+import java.sql.*;  
+import java.text.NumberFormat;
+import java.util.*;
+  
+import javax.servlet.ServletException;   
+import javax.servlet.http.HttpServlet;  
+import javax.servlet.http.HttpServletRequest;  
+import javax.servlet.http.HttpServletResponse;
+
+public class AdminServlet extends HttpServlet {	
+
+	private static final long serialVersionUID = 1L;
+	
+    public AdminServlet() {
+        super();   
+    }  
+       
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException{
+		//Retrieve the values for H T M L page ;
+		String pID=req.getParameter("ProductID");
+		String pName=req.getParameter("ProductName");
+		String price=req.getParameter("Price");
+		
+		try {
+			  // Step 1. Load the JDBC driver
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			  
+			  // Step 2. Create a Connection object
+			  Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "system", "jade123");
+			   
+			  System.out.println("GOT connection");
+
+			  
+			  // Step 3. Create a Statement object and call its executeUpdate 
+			  // method to insert a record
+			  PrintWriter pw=resp.getWriter();
+			  PreparedStatement pstmt=con.prepareStatement
+			  ("Insert Into PRODUCTS VALUES(?,?,?,?,?)");
+			  pstmt.setString(4,pID);
+			  pstmt.setString(1,pName);
+			  pstmt.setString(3,price);
+			  pstmt.setString(2, "25");
+			  pstmt.setString(5, "IN STOCK");
+			  
+			  
+			 
+			  pstmt.executeUpdate();
+			 
+			  System.out.println("Update successfully completed!!!");
+			 
+			 pstmt.close();
+			  con.close();
+			}
+			catch (ClassNotFoundException e1) {
+			  // JDBC driver class not found, print error message to the console
+			  System.out.println(e1.toString());
+			}
+			catch (SQLException e2) {
+			  // Exception when executing java.sql related commands, print error message to the console
+			  System.out.println(e2.toString());
+			}
+			catch (Exception e3) {
+			  // other unexpected exception, print error message to the console
+			  System.out.println(e3.toString());
+			}
+	}
+	
+        }
+	
