@@ -1,0 +1,103 @@
+<html>
+
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+
+<title>bFIT for Java HomePAGE</title>
+
+</head>
+
+<body bgcolor='black' >
+
+<basefont color = 'white' >
+
+<div id="container" style="width:1250px">
+
+
+
+
+ <div id="header" style ="height:200px" >
+
+ <h1><center>WELCOME TO bFIT HOME PAGE</center></h1>
+
+<font color="gold" size="20">
+
+
+
+
+<marquee right><b><i>iNnOvAtIoN is anything, BUT bUsInEsS as usual!!</i></b></marquee>
+
+</font>
+
+</div>
+
+
+
+
+ <div id="menu" style="width:250px;float:left;">
+
+ <p><font  size="6">
+
+ <b>Menu</b><br>
+
+ <a style= "color: #FFFFFF" href=OverView.html>Overview</a><br>
+
+<a style= "color: #FFFFFF" href="ContactList.html">ABOUT US</a><br>
+
+<a  style= "color: #FFFFFF" href= "AdminLogin.html">Admin Login</a><br>
+
+<a style= "color: #FFFFFF" href= "Login.html">User Login</a>
+
+</font></p>
+
+ </div>
+
+ 
+
+ <div id="content" style=float:left;">
+
+<p align="center"><img src="BFIT.png" height=250 width=600/></p>
+
+<font color="white" size="8">
+
+
+
+
+
+
+
+<p><b><i><font color="red" size="12">Our Vision:</font></i></b> B fabulously F.I.T. aLLwAys !!!!</p>
+
+
+
+
+
+
+
+<p><b><i><font color="red" size="12">Our MISSION Statement :</font></i></b> "We will provide branded products and services of superior
+quality and value that improve the lives of our customers. As a result, our family will reward us with leadership, sales, profits,
+and value creation, allowing our people, our shareholders, and the communities in which we live and work to prosper."
+</p>
+
+
+
+
+</font>
+
+</div>
+
+
+
+
+
+
+
+ </div>
+
+
+
+
+</body>
+
+</html>
