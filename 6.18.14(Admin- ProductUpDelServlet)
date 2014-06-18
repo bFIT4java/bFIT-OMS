@@ -1,0 +1,37 @@
+package com.UST;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+
+public class ProductUpDelServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+  
+    public ProductUpDelServlet() {
+        super();
+        
+    }
+
+	
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String productName=request.getParameter("SearchCategory");
+		AdminClass ac= new AdminClass();
+		PrintWriter pw = response.getWriter();
+		boolean found =ac.search(productName);
+		if(found==true)
+		{
+			pw.println("F O U N D ");
+		}
+		else{
+			
+			pw.println("N O T  F O U N D");
+		}
+	}
+
+}
