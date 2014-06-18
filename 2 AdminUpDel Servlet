@@ -1,0 +1,92 @@
+package com.UST;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+
+public class AdminUpDel extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+   
+    public AdminUpDel() {
+        super();
+    }
+
+	
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	
+
+		//Retrieve the values for H T M L page ;
+		 PrintWriter pw=resp.getWriter();
+		 String prodName=req.getParameter("ProductName");
+			   
+			   Connection conn = null;
+			   Statement stmt = null;
+			   try{
+			      //STEP 2: Register JDBC driver
+				   Class.forName("oracle.jdbc.driver.OracleDriver");
+
+			      //STEP 3: Open a connection
+			      System.out.println("Connecting to a selected database...");
+			      Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "system", "jade123");
+			      System.out.println("Connected database successfully...");
+			      
+			      //STEP 4: Execute a query
+			      System.out.println("Creating statement...");
+			      stmt = conn.createStatement();
+
+			      // Now you can extract all the records to see the remaining records
+			     
+			      String sql = "UPDATE Products " +
+			        "SET prodName = ? WHERE prodID (1,2)";
+
+			      
+			      sql="SELECT * from PRODUCTS";
+			      ResultSet rs = stmt.executeQuery(sql);
+
+			      while(rs.next()){
+			         //Retrieve by column name
+			         int prodID  = rs.getInt("productID");
+			         String prodName1 = rs.getString("productName");
+			         Double price= rs.getDouble("price");
+			        
+			         //Display values
+			         System.out.print("Product Id: " + prodID);
+			         System.out.print("Product Name: " + prodName1);
+			         System.out.print("Price: " + price);
+			      }
+			      rs.close();
+			   }catch(SQLException se){
+			      //Handle errors for JDBC
+			      se.printStackTrace();
+			   }catch(Exception e){
+			      //Handle errors for Class.forName
+			      e.printStackTrace();
+			   }finally{
+			      //finally block used to close resources
+			      try{
+			         if(stmt!=null)
+			            conn.close();
+			      }catch(SQLException se){
+			      }// do nothing
+			      try{
+			         if(conn!=null)
+			            conn.close();
+			      }catch(SQLException se){
+			         se.printStackTrace();
+			      }//end finally try
+			   }//end try
+			   System.out.println("Goodbye!");
+			}//end main
+			}//end JDBCExample
+
+	
