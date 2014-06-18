@@ -1,0 +1,134 @@
+package com.UST;
+
+import java.io.IOException;
+
+import java.io.PrintWriter;
+
+import java.sql.Connection;
+
+import java.sql.DriverManager;
+
+import java.sql.PreparedStatement;
+
+import java.sql.ResultSet;
+
+import java.sql.SQLException;
+
+import java.sql.Statement;
+
+import java.util.ArrayList;
+
+import javax.servlet.RequestDispatcher;
+
+import javax.servlet.ServletException;
+
+import javax.servlet.http.HttpServlet;
+
+import javax.servlet.http.HttpServletRequest;
+
+import javax.servlet.http.HttpServletResponse;
+
+
+ //Servlet implementation class AdminServlet
+
+
+public class AdminServlet extends HttpServlet {
+
+private static final long serialVersionUID = 1L;
+
+
+
+// @see HttpServlet#HttpServlet()
+
+
+
+public AdminServlet() {
+
+super();
+
+// TODO Auto-generated constructor stub
+
+}
+
+//for the update AdminForm.html //
+
+protected void doPost(HttpServletRequest request, HttpServletResponse response, String[] Item) throws ServletException, IOException {
+
+
+
+//Retrieve the values for H T M L page ;
+
+String nm=request.getParameter("PRODUCT_NAME");
+
+double pr=Double.parseDouble(request.getParameter("PRICE"));
+
+int ID=Integer.parseInt(request.getParameter("PRODUCT_ID"));
+
+Item=request.getParameterValues("Item");
+
+try {
+
+// Step 1. Load the JDBC driver
+
+Class.forName("oracle.jdbc.driver.OracleDriver");
+
+// Step 2. Create a Connection object
+
+Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "system", "jade123");
+
+System.out.println("GOT connection");
+
+// Step 3. Create a Statement object and call its executeUpdate
+
+// method to insert a record
+
+PrintWriter pw=response.getWriter();
+
+PreparedStatement pstmt=(PreparedStatement) con.createStatement();
+
+String sql=("Insert Into PRODUCTS VALUES(?,?,?),name ");
+
+pstmt.setString(1, nm);
+
+pstmt.setDouble(2, pr);
+
+pstmt.setInt(3, ID);
+
+int run = pstmt.executeUpdate();
+
+if(run > 0)
+
+{
+
+con.commit();
+
+//pw.println("Update successfully completed!!!");
+
+RequestDispatcher rd = request.getRequestDispatcher("AdminAdd.jsp");
+
+rd.forward(request, response);
+
+}
+
+else
+
+{
+
+con.rollback();
+
+}
+
+con.close();
+
+}
+
+catch (Exception e1) {
+
+// JDBC driver class not found, print error message to the console
+
+e1.printStackTrace();
+
+}
+
+}
+
