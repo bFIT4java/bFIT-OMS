@@ -1,0 +1,105 @@
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.Vector;
+
+public class AdminClass 
+{
+	
+	
+	
+	public Vector<Integer> sino= new Vector<Integer>();
+	public Vector<Integer>productID=new Vector<Integer>();
+	public Vector<String> productName=new Vector<String>();
+	public int sglSino;
+	public int sglProductID;
+	public String sglProductName;
+	public double sglPrice;
+	
+	public void setVector() 
+	{
+		try
+		{
+			Class.forName("oracle.jdbc.driver.oracleDriver");
+			Connection con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","jade123");
+			
+			if(con!=null)
+			{
+				Statement stmt=con.createStatement();
+				ResultSet rs=stmt.executeQuery("select * From PRODUCTS");
+				
+				while(rs.next())
+				{
+					int sn=Integer.parseInt(rs.getString(1));
+					int id=Integer.parseInt(rs.getString(2));
+					String pn=rs.getString(3);
+					
+					
+						sino.add(sn);
+						productID.add(id);
+						productName.add(pn);
+				}
+					
+			}
+		}
+			catch(Exception e)
+			{
+				System.out.println("Database is connected");
+				System.out.println(e.getMessage());
+				System.out.println(e.getCause());
+				System.out.println(e.getStackTrace());
+			}
+		}
+	
+	
+	public boolean search(String productName) 
+	{
+		boolean found = false;
+		try
+		{
+			Class.forName("oracle.jdbc.driver.oracleDriver");
+			Connection con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","jades123");
+			
+			if(con!=null)
+			{
+				Statement stmt=con.createStatement();
+				ResultSet rs=stmt.executeQuery("select * from PRODUCTS");
+				
+				while(rs.next())
+				{
+					
+					sglProductName=rs.getString(3);
+					if(sglProductName.equalsIgnoreCase(productName))
+					{
+						sglSino=Integer.parseInt(rs.getString(1));
+						sglProductID=Integer.parseInt(rs.getString(2));
+						sglPrice=Double.parseDouble(rs.getString(4));
+						found=true;
+					}
+					
+					
+				}
+					
+			}
+		}
+			catch(Exception e)
+			{
+				System.out.println("Database is connected");
+				System.out.println(e.getMessage());
+				System.out.println(e.getCause());
+				System.out.println(e.getStackTrace());
+			}
+			return found;
+		}
+	
+	}
+
+
+
+
+		
+		
+
+	
