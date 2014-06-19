@@ -1,0 +1,24 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>AdminScreen</title>
+</head>
+<body>
+<center>
+<body bgcolor="black">
+<font color="white" size="10">
+<h1> Order Management System</h1>
+<img src="bFIT.png" height ="150"width = "300"/><br></center>
+
+<h2> <Center>A D M I N     S C R E E N </Center></h2>
+
+<font size="7">ADMIN MASTER<br></font>
+
+Product 
+<tr><th><input type="submit" value="CREATE"  style="height:50px; width: 100px" onclick="window.open('AdminForm.html')"></th>
+<th><input type="submit" value="VIEW"  style="height:50px; width: 100px" onclick="window.open('ProductListScrn.html')"></th></tr>
+
+
+</body>
+</html>
