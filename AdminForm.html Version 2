@@ -9,8 +9,8 @@
 <body bgcolor="gold">
 <font color="green" size="10">
 <h1> Welcome to the bFIT4java Administrator Page! </h1>
-<img src="bFIT.png" height ="150"width = "300"/><br></center>
-<form action="http://localhost:8082/bFIT4java/AdminServlet" method="post">
+<img src="BFIT.png" height ="150"width = "300"/><br></center>
+<form action="http://localhost:8082/OMS/AdminServlet" method="post">
 
 <h2> <Center> P R O D U C T Modification System- Please complete the fields below:</Center></h2>
 
