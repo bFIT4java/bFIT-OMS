@@ -1,0 +1,82 @@
+package com.UST;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+
+public class AdminSearchServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+   
+    public AdminSearchServlet() {
+        super();
+        
+    }
+
+	
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+	
+	//Get the product ID G for gadget or RF for Fashion from the form
+	String  productID =req.getParameter("PRODUCT_ID");
+	//Now, we need to write JDBC code here
+	
+	try
+	{
+		Class.forName("oracle.jdbc.driver.OracleDriver");
+		Connection con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","jade123");
+		PreparedStatement psmt=con.prepareStatement("SELECT PRODUCT_NAME, PRICE, PRODUCT_ID FROM PRODUCTS where PRODUCT_ID=G? OR RF?");
+		psmt.setString(1,productID);
+		psmt.executeUpdate();
+		ResultSet rs=psmt.executeQuery();
+		
+		PrintWriter pw=resp.getWriter();
+		pw.println("The product category received is "+productID);
+		pw.println("<body bgcolor=\"white\">");
+		pw.println("<table border=1 bgcolor=white>");
+		pw.println("<tr><td>Product ID</td><td>Product Name</td><td>Price</td></tr>");
+			while(rs.next())
+			{
+				
+				String prodName=rs.getString("PRODUCT_NAME");
+				String price=rs.getString("PRICE");
+				
+				if (productID.equalsIgnoreCase("G_")) {
+				pw.println("<img src=\"gadgets.jpg\"/>");
+				pw.println("<tr bgcolor=RED>");
+				pw.println("<td>"+productID+"</td>");
+				pw.println("<td>"+prodName+"</td>");
+				pw.println("<td>"+price+"</td>");
+				pw.println("</tr>");
+				}
+				else
+				{
+//					if (prodID.equalsIgnoreCase("RF_")){
+					pw.println("<img src=\"Fashion.jpg\"/>");
+					pw.println("<tr bgcolor=white>");
+					pw.println("<td>"+productID+"</td>");
+					pw.println("<td>"+prodName+"</td>");
+					pw.println("<td>"+price+"</td>");
+					pw.println("</tr>");						
+
+			}
+				}	
+			
+		pw.println("</table>");
+			}
+  		catch(Exception e)
+  		{
+		System.out.println("Some serious problems connecting to JDBC");
+		System.out.println(e.getMessage());
+  	}
+	}
+}
